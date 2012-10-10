@@ -74,7 +74,7 @@ switch (strtolower($published)) {
 		break;
 }
 $tvOutput = $tvOutput[$tvName];
-$tvOutput = json_decode($tvOutput);
+$tvOutput = json_decode("[{$tvOutput}]");
 if (is_object($tvOutput)) {
 	$tvOutput = $tvOutput->fieldValue;
 }

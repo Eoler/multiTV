@@ -108,10 +108,12 @@ function TransformField(tvid, tvmode, tvfields, tvlanguage) {
 			});
 			values.push(fieldValues);
 		});
-		field.setValue($j.toJSON({
+		/*field.setValue($j.toJSON({
 			fieldValue: values, 
 			fieldSettings: fieldSettings
-		}));
+		}));*/
+		var fldval = Json.toString(values);
+		field.val(fldval.substring(1, fldval.length-1));
 	}
 
 	function AddElementEvents(element) {
@@ -173,11 +175,12 @@ function TransformField(tvid, tvmode, tvfields, tvlanguage) {
 							$j(this).val('');
 					}
 				});
+				field.val('');//[]
 			}
 			return false;
 		});
 		// change field
-		element.find('[name]').bind('change keyup mouseup', function() {
+		element.find('[name]').bind('change mouseup', function() { // keyup
 			setMultiValue();
 			return false;
 		});
@@ -264,7 +267,7 @@ function TransformField(tvid, tvmode, tvfields, tvlanguage) {
 		fieldEdit.find('a').click(function() {
 			var clone = fieldListElementEmpty.clone(true);
 			fieldList.append(clone);
-			field.val('[]');
+			field.val('');//[]
 			fieldList.show();
 			fieldClear.show();
 			fieldPaste.show();
@@ -401,7 +404,7 @@ function TransformField(tvid, tvmode, tvfields, tvlanguage) {
 	// transform the input		
 	if (field.val() != '@INHERIT') { 
 		if (!field.hasClass('transformed')) {
-			var jsonValue = $j.evalJSON(field.val());
+			var jsonValue = $j.evalJSON('['+field.val()+']');
 			if (jsonValue) {
 				if (jsonValue.constructor == Array) {
 					fieldValue = jsonValue;

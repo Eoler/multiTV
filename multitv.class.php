@@ -137,8 +137,8 @@ class multiTV {
 		global $modx;
 
 		$tvid = "tv" . $this->tvID;
-		$tvvalue = ($this->tvValue != '') ? $this->tvValue : '[]';
-		$tvvalue = str_replace(array('[[', ']]'), array('[ [', '] ]'), $tvvalue);
+		$tvvalue = ($this->tvValue != '') ? $this->tvValue : ''; //[]
+		//$tvvalue = str_replace(array('[[', ']]'), array('[ [', '] ]'), $tvvalue);
 		$tvfields = json_encode(array('fieldnames' => $this->fieldnames, 'fieldtypes' => $this->fieldtypes, 'csvseparator' => $this->configuration['csvseparator']));
 		$tvlanguage = json_encode($this->language);
 		$tvpath = '../' . MTV_PATH;

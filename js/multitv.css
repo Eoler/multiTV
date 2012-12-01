@@ -39,6 +39,8 @@
 
 .multitv .tvedit, .multitv .tvclear, .multitv .tvpaste { float: left; margin-right: 10px }
 
+.multitv .browseimage { clear: none !important }
+
 .tvpasteform { width: 450px }
 .tvpasteform .pastearea, .tvpasteform .buttons { width: 438px } 
 .tvpasteform .legend { float: left; margin-left: 5px }

@@ -36,6 +36,8 @@ $tvSettings = $modx->db->getRow($res);
 if (!$tvSettings) {
 	return 'Template variable ' . $tvName . ' does not exists';
 }
+// pre-init parameters
+if (isset($tplname)) { $tvSettings['templates'] = $tplname; }
 
 // init multiTV class
 $multiTV = new multiTV($tvSettings);
